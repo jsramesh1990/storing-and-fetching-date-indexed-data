@@ -12,7 +12,8 @@ std::string to_string() const;
 std::tuple<int,int,int> as_tuple() const { return {y,m,d}; }
 };
 
-
 inline bool operator<(const Date &a, const Date &b) { return a.as_tuple() < b.as_tuple(); }
 inline bool operator==(const Date &a, const Date &b) { return a.as_tuple() == b.as_tuple(); }
-inline bool operator<=(const Date &a, const Date &b) { return a.as_tuple() <= b.as_tuple(); }
+inline bool operator<=(const Date &a, const Date &b) { return !(b < a); }
+inline bool operator>=(const Date &a, const Date &b) { return !(a < b); }
+
